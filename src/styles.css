@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+.fondo-home {
+    background-color: black;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; 
+}
+
+.bienvenida {
+    color: #fff;
+    text-align: center;
+}
+
+.sobre-nosotros {
+    color: #fff;
+    font-size: 16px;
+}
+
+.texto-sobre-nosotros {
+    color: #fff;
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    text-align: justify;
+}
+
+.siguenos {
+    font-size: 37px;
+}
+
+a {
+    color: white;
+}
+
+.footer {
+    color: #fff;
+    text-align: center;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-lg-4, .col-lg-8 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.titulos{
+    text-align: center;
+    color: #8c0004;
+}
+
+.card-text{
+    text-align: justify;
+}
+
+.card-body{
+    background-color: #8c0004;
+    color: #fff;
+}
+
+.tarjeta-2{
+    background-color: #fff;
+    color: #000;
+}
+
+.modal-header{
+    background-color: #8c0004;
+    color: #fff;
+}
+
+.modal-body{
+    background-color: #000;
+}
+
+.form-label{
+    color: #fff;
+}
+
+.modal-header {
+    position: relative;
+}
+
+.modal-title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-header .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}

@@ -1,0 +1,63 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="/assets/images/logoempresa.png" alt="logoempresa" width="" height="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#nosotros">Sobre nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#beneficios">Beneficios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#footer">Redes sociales</a>
+                </li>
+            </ul>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#loginModal">Loguearse</button>
+                </div>
+                <div class="col-lg-6">
+                    <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!-- Modal para iniciar sesion -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="loginModalLabel"><img src="/assets/images/logo2.png" alt="logo2" height="100px"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-formulario-login></app-formulario-login>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para registrarse -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel"><img src="/assets/images/logo2.png" alt="logo2" height="100px"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-formulario-registro></app-formulario-registro>
+            </div>
+        </div>
+    </div>
+</div>
