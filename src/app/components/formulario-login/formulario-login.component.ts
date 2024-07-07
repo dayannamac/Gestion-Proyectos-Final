@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './formulario-login.component.css'
 })
 export class FormularioLoginComponent {
-
+  
 }
