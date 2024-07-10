@@ -9,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class FormularioRegistroComponent {
 
+  constructor(private servicio: UserService) {}
+
+  nombreCompleto: any;
+  usuario: any;
+  password: any;
+
+  saveUsers(formulario: any) {
+
+    const temp = {
+      nombreCompleto: formulario.value.nombre,
+      usuario: formulario.value.usuario,
+      password: formulario.value.password,
+    }
+    this.servicio.postUsers(temp).subscribe()
+
+    alert('usuario registrado!')
+    window.location.reload()
+  }
 }

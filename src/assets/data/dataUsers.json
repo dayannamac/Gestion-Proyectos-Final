@@ -1,0 +1,9 @@
+{
+    "usuarios": [
+        {
+            "nombre": "Marcelo López",
+            "usuario": "marceloxD",
+            "password": "prueba123"
+        }
+    ]
+}
