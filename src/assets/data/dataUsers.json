@@ -1,10 +1,22 @@
 {
-    "usuarios": [
-        {
-            "id": 101,
-            "nombre": "Marcelo López",
-            "usuario": "marceloxD",
-            "password": "prueba123"
-        }
-    ]
+  "usuarios": [
+    {
+      "id": 101,
+      "nombre": "Marcelo López",
+      "usuario": "marceloxD",
+      "password": "prueba123"
+    },
+    {
+      "nombre": "Anthony Luzon",
+      "usuario": "aluzon",
+      "password": "prueba123",
+      "id": 102
+    },
+    {
+      "nombre": "Juan",
+      "usuario": "jpaladez",
+      "password": "prueba123",
+      "id": 103
+    }
+  ]
 }
