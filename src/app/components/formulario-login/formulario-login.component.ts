@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../../services/usuarios.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-login',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './formulario-login.component.html',
   styleUrl: './formulario-login.component.css'
 })
 export class FormularioLoginComponent {
 
-  constructor(private service: UserService, private ruta: Router){}
+  constructor(private service: UsuariosService, private ruta: Router){}
 
   password: any;
   usuario: any;
 
   login(formulario: any) {
-    this.service.getUsers().suscribe((users) => {
-
+    console.log(formulario.value);
+    this.service.getUsuarios().subscribe((users) => {
+      console.log('Usuarios obtenidos:', users);
       let foundUser;
 
       for (const user of users) {
 
         if (user.usuario === formulario.value.usuario && user.password === formulario.value.password) {
-          // Aquí va el id
+          let userID = user.id;
           let userName = user.name;
+          localStorage.setItem('usuarioID', userID)
           localStorage.setItem('usuarioNom', userName)
           foundUser = user;
           break;
@@ -36,7 +42,7 @@ export class FormularioLoginComponent {
         window.location.reload()
         localStorage.setItem('login', 'true');
         localStorage.setItem('usuario', JSON.stringify(foundUser));
-        this.ruta.navigate(['/inicio']);
+        this.ruta.navigate(['inicio']);
       } else {
         alert('Usuario o contraseña incorrecto!');
       }

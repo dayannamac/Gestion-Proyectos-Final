@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
+import { UsuariosService } from '../../services/usuarios.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-registro',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './formulario-registro.component.html',
   styleUrl: './formulario-registro.component.css'
 })
 export class FormularioRegistroComponent {
 
-  constructor(private servicio: UserService) {}
+  constructor(private servicio: UsuariosService) {}
 
   nombreCompleto: any;
   usuario: any;
@@ -22,7 +24,7 @@ export class FormularioRegistroComponent {
       usuario: formulario.value.usuario,
       password: formulario.value.password,
     }
-    this.servicio.postUsers(temp).subscribe()
+    //this.servicio.postUsers(temp).subscribe()
 
     alert('usuario registrado!')
     window.location.reload()
