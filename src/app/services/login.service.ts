@@ -11,7 +11,7 @@ interface User {
 })
 export class LoginService {
 
-  private usersUrl = 'assets/users.json';
+  private usersUrl = 'assets/usuarios.json';
 
   constructor(private http: HttpClient) { }
 
