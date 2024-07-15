@@ -16,6 +16,8 @@ export class FormularioLoginComponent {
 
   constructor(private service: UsuariosService, private ruta: Router){}
 
+  public static logeado: boolean = false;
+
   password: any;
   usuario: any;
 
@@ -39,7 +41,7 @@ export class FormularioLoginComponent {
 
       if(foundUser) {
         alert('Bienvenido');
-        localStorage.setItem('login', 'true');
+        FormularioLoginComponent.logeado = true;
         localStorage.setItem('usuario', JSON.stringify(foundUser));
         this.ruta.navigate(['inicio']);
       } else {
