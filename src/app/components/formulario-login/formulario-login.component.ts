@@ -42,8 +42,8 @@ export class FormularioLoginComponent {
       if(foundUser) {
         alert('Bienvenido');
         FormularioLoginComponent.logeado = true;
+        this.ruta.navigate(['/inicio']);
         localStorage.setItem('usuario', JSON.stringify(foundUser));
-        this.ruta.navigate(['inicio']);
       } else {
         alert('Usuario o contraseña incorrecto!');
       }

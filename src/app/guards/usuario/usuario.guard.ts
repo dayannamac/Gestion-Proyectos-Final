@@ -4,7 +4,7 @@ import { inject } from '@angular/core';
 
 export const usuarioGuard: CanActivateFn = (route, state) => {
 
-  let acceso:boolean = FormularioLoginComponent.logeado;
+  let acceso: boolean = FormularioLoginComponent.logeado;
   const router = inject(Router);
 
   if (acceso === true) {
