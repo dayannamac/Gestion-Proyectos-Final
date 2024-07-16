@@ -99,3 +99,40 @@ a {
     right: 1rem;
     top: 1rem;
 }
+
+/*Inicio*/
+.inicio {
+    background-image: url("https://tylerdthompson.com/wp-content/uploads/2020/07/mike-tinnion-3ym6i13Y9LU-unsplash-1024x700.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 90.7vh; 
+    width: 100%; 
+}
+
+.agregar{
+    font-size: 23px;
+}
+
+.salir{
+    font-size: 17px;
+}
+
+.card {
+    width: 300px;
+    height: 205px; 
+    border: none; 
+    overflow: hidden; 
+}
+
+.card-body-entradas {
+    background-image: url('/assets/images/nota.png'); 
+    background-size: 100% 120%;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100%; 
+    width: 100%; 
+    padding: 20px;
+    color: black; 
+}
+
