@@ -1,21 +1,23 @@
 <form>
     <div class="mb-3">
         <label for="fechaEE" class="form-label">Fecha:</label>
-        <input type="date" class="form-control" name="date" #date>
+        <input type="date" class="form-control" name="date" [(ngModel)]="date">
     </div>
     <div class="mb-3">
         <label for="tituloEE" class="form-label">Título</label>
-        <input type="text" class="form-control" name="title" #title>
+        <input type="text" class="form-control" name="title" [(ngModel)]="title">
     </div>
     <div class="mb-3">
         <label for="contenidoEE" class="form-label">Contenido</label>
-        <textarea class="form-control" name="message" rows="4" #message></textarea>
+        <textarea class="form-control" name="message" rows="4" [(ngModel)]="message"></textarea>
     </div>
     <br>
     <div class="d-flex justify-content-center">
         <div class="row">
-            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="updateMessage(message.value, title.value, date.value)">Editar</button></div>
-            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="deleteMessage()"><i class="bi bi-trash-fill"></i></button></div>
+            <div class="col-lg-6"><button type="button" class="btn btn-light" (click)="updateMessage()">Editar</button>
+            </div>
+            <div class="col-lg-6"><button type="button" class="btn btn-light" (click)="deleteMessage()"><i
+                        class="bi bi-trash-fill"></i></button></div>
         </div>
-    </div>    
+    </div>
 </form>

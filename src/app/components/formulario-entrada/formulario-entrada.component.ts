@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formulario-entrada.component.css',
 })
 export class FormularioEntradaComponent {
-  constructor(private servicio: InformacionService) {}
+  constructor(private servicio: InformacionService) { }
 
   idEntrada: any;
   date: any;
@@ -22,28 +22,25 @@ export class FormularioEntradaComponent {
       let idMayor = 0;
 
       for (const entrie of entries) {
-        if (idMayor != 0) {
-          if (entrie.id >= idMayor) {
-            idMayor = entrie.id;
-          }
-        } else {
+        if (entrie.id > idMayor) {
           idMayor = entrie.id;
         }
       }
 
       this.idEntrada = idMayor + 1;
+
+      const nuevaEntrada = {
+        id: this.idEntrada,
+        idUser: Number(localStorage.getItem('usuarioID')),
+        date: form.value.fecha,
+        title: form.value.titulo,
+        message: form.value.contenido,
+      };
+
+      this.servicio.postMensajes(nuevaEntrada).subscribe(() => {
+        alert('Entrada registrada!');
+        window.location.reload();
+      });
     });
-
-    const nuevaEntrada = {
-      id: this.idEntrada, // Genera un ID único
-      idUser: Number(localStorage.getItem('usuarioID')),
-      date: form.value.fecha,
-      title: form.value.titulo,
-      message: form.value.contenido,
-    };
-
-    this.servicio.postMensajes(nuevaEntrada).subscribe();
-    window.location.reload()
-    alert('Entrada registrada!');
   }
 }

@@ -8,7 +8,7 @@ import { InformacionService } from '../../services/informacion.service';
 
 interface EntradaTrj {
   idUser: any,
-  id:any,
+  id: any,
   date: any,
   title: any,
   message: any
@@ -23,28 +23,29 @@ interface EntradaTrj {
 })
 export class InicioComponent {
 
-  constructor(private ruta: Router, private servicio: InformacionService){}
+  constructor(private ruta: Router, private servicio: InformacionService) { }
 
   nombre = localStorage.getItem('usuarioNom')
   idUsuario = Number(localStorage.getItem('usuarioID'))
   dataMensajes: any;
   mensajes: EntradaTrj[] = [];
+  selectedMessage: EntradaTrj | null = null;
 
-  ngOnInit(){
+  ngOnInit() {
 
-    this.servicio.getMensajes().subscribe(mensaje =>{
+    this.servicio.getMensajes().subscribe(mensaje => {
       this.dataMensajes = mensaje;
 
-        for(let item of this.dataMensajes){
-          if (item.idUser === this.idUsuario) {
-            this.mensajes.push(item)
-          }
+      for (let item of this.dataMensajes) {
+        if (item.idUser === this.idUsuario) {
+          this.mensajes.push(item)
         }
+      }
     })
   }
 
   saveInfo(id: any) {
-    localStorage.setItem('tarjetaID', id)
+    this.selectedMessage = this.mensajes.find(mensaje => mensaje.id === id) || null;
   }
 
   cerrarSesion() {

@@ -43,18 +43,19 @@
 
 <div class="inicio">
     <br><br>
-    <div class="row justify-content-center" data-bs-toggle="modal" data-bs-target="#editarEliminarEntradaModal">
-        
-        <!--Tarjetas de entrada-->
-        <div class="card col-lg-4 mb-5 mx-3" *ngFor="let item of mensajes" style="width: 18rem;">
-            <div class="card-body-entradas" (click)="saveInfo(item.id)">
-                <br>
-                <h6 class="mt-1">{{item.date}}</h6>
-                <h5 class="card-title"><b>{{item.title}}</b></h5>
-                <p class="card-text">{{item.message}}</p>
+    <div class="container">
+        <div class="row" data-bs-toggle="modal" data-bs-target="#editarEliminarEntradaModal">
+            <!--Tarjetas de entrada-->
+            <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of mensajes">
+                <div (click)="saveInfo(item.id)" style="cursor: pointer;">
+                    <div class="card-body-entradas">
+                        <h6 class="mt-1">{{item.date}}</h6>
+                        <h5 class="card-title"><b>{{item.title}}</b></h5>
+                        <p class="card-text">{{item.message}}</p>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -70,7 +71,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <app-formulario-editar-eliminar-entrada></app-formulario-editar-eliminar-entrada>
+                <app-formulario-editar-eliminar-entrada
+                    [mensajesEE]="selectedMessage"></app-formulario-editar-eliminar-entrada>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { InformacionService } from '../../services/informacion.service';
 import { FormsModule } from '@angular/forms';
 
@@ -11,33 +11,46 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './formulario-editar-eliminar-entrada.component.html',
   styleUrls: ['./formulario-editar-eliminar-entrada.component.css']
 })
-export class FormularioEditarEliminarEntradaComponent {
-  
-  constructor(private service: InformacionService){}
 
-  message: any;
-  title: any;
-  date: any;
+export class FormularioEditarEliminarEntradaComponent implements OnChanges {
 
-  updateMessage(message: string, title: string, date: string) {
-    let id = Number(localStorage.getItem('tarjetaID'));
-    let idUser = Number(localStorage.getItem('usuarioID'));
+  @Input() mensajesEE: any;
+  message: string = '';
+  title: string = '';
+  date: string = '';
 
-    const entrada = {
-      id,
-      idUser,
-      date,
-      title,
-      message
+  constructor(private service: InformacionService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['mensajesEE'] && this.mensajesEE) {
+      this.message = this.mensajesEE.message;
+      this.title = this.mensajesEE.title;
+      this.date = this.mensajesEE.date;
     }
+  }
 
-    this.service.putMensajes(entrada, id).subscribe()
-    window.location.reload()
+  updateMessage() {
+    if (this.mensajesEE) {
+      const updatedEntry = {
+        ...this.mensajesEE,
+        message: this.message,
+        title: this.title,
+        date: this.date
+      };
+
+      this.service.putMensajes(updatedEntry, this.mensajesEE.id).subscribe(() => {
+        alert("Datos actualizados correctamente!");
+        window.location.reload();
+      });
+    }
   }
 
   deleteMessage() {
-    let id = String(localStorage.getItem('tarjetaID'))
-    this.service.deleteMensajes(id).subscribe()
-    window.location.reload()
+    if (this.mensajesEE) {
+      this.service.deleteMensajes(this.mensajesEE.id).subscribe(() => {
+        window.location.reload();
+      });
+    }
   }
 }
+

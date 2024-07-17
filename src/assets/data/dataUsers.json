@@ -39,18 +39,25 @@
   ],
   "mensajes": [
     {
-      "id": 3,
-      "idUser": 101,
-      "date": "2024-07-27",
-      "title": "Hola",
-      "message": "Esta es una entrada de prueba"
-    },
-    {
       "idUser": 102,
       "date": "2024-07-17",
       "title": "Hola",
-      "message": "s9idhnvusdv",
+      "message": "He ingresado y editado esta entrada",
       "id": 4
+    },
+    {
+      "id": 5,
+      "idUser": 101,
+      "date": "2024-07-16",
+      "title": "Ingreso",
+      "message": "Es una prueba de ingreso"
+    },
+    {
+      "id": 6,
+      "idUser": 101,
+      "date": "2024-07-17",
+      "title": "Edición",
+      "message": "Esta es una prueba de edición"
     }
   ]
 }
