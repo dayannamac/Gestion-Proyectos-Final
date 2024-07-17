@@ -43,6 +43,10 @@ export class InicioComponent {
     })
   }
 
+  saveInfo(id: any) {
+    localStorage.setItem('tarjetaID', id)
+  }
+
   cerrarSesion() {
     FormularioLoginComponent.logeado = false;
     localStorage.setItem('usuarioNom', '');

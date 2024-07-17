@@ -15,16 +15,29 @@ export class FormularioEditarEliminarEntradaComponent {
   
   constructor(private service: InformacionService){}
 
-  @Input() mensajesEE: any;
+  message: any;
+  title: any;
+  date: any;
 
-  updateMessage() {
-    this.service.putMensajes(this.mensajesEE, this.mensajesEE.id).subscribe(() => {
-      alert("Datos actualizados correctamente!");
-      window.location.reload();
-    });
+  updateMessage(message: string, title: string, date: string) {
+    let id = Number(localStorage.getItem('tarjetaID'));
+    let idUser = Number(localStorage.getItem('usuarioID'));
+
+    const entrada = {
+      id,
+      idUser,
+      date,
+      title,
+      message
+    }
+
+    this.service.putMensajes(entrada, id).subscribe()
+    window.location.reload()
   }
 
-  deleteMessage(id: any) {
+  deleteMessage() {
+    let id = String(localStorage.getItem('tarjetaID'))
     this.service.deleteMensajes(id).subscribe()
+    window.location.reload()
   }
 }

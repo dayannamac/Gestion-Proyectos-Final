@@ -1,25 +1,21 @@
-<form (ngSubmit)="updateMessage()" #form="ngForm">
-    <div class="mb-3">
-        <label for="idEE" class="form-label">Id:</label>
-        <input type="number" class="form-control" name="id" id="idEE" [(ngModel)]="mensajesEE.id" readonly>
-    </div>
+<form>
     <div class="mb-3">
         <label for="fechaEE" class="form-label">Fecha:</label>
-        <input type="date" class="form-control" name="date" id="fechaEE" [(ngModel)]="mensajesEE.date">
+        <input type="date" class="form-control" name="date" #date>
     </div>
     <div class="mb-3">
         <label for="tituloEE" class="form-label">Título</label>
-        <input type="text" class="form-control" name="title" id="tituloEE" [(ngModel)]="mensajesEE.title">
+        <input type="text" class="form-control" name="title" #title>
     </div>
     <div class="mb-3">
         <label for="contenidoEE" class="form-label">Contenido</label>
-        <textarea class="form-control" name="message" id="contenidoEE" rows="4" [(ngModel)]="mensajesEE.message"></textarea>
+        <textarea class="form-control" name="message" rows="4" #message></textarea>
     </div>
     <br>
     <div class="d-flex justify-content-center">
         <div class="row">
-            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="updateMessage()">Editar</button></div>
-            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="deleteMessage(mensajesEE.id)"><i class="bi bi-trash-fill"></i></button></div>
+            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="updateMessage(message.value, title.value, date.value)">Editar</button></div>
+            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="deleteMessage()"><i class="bi bi-trash-fill"></i></button></div>
         </div>
     </div>    
 </form>

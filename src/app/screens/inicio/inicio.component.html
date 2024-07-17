@@ -47,7 +47,7 @@
         
         <!--Tarjetas de entrada-->
         <div class="card col-lg-4 mb-5 mx-3" *ngFor="let item of mensajes" style="width: 18rem;">
-            <div class="card-body-entradas">
+            <div class="card-body-entradas" (click)="saveInfo(item.id)">
                 <br>
                 <h6 class="mt-1">{{item.date}}</h6>
                 <h5 class="card-title"><b>{{item.title}}</b></h5>
