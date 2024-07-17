@@ -1,70 +1,67 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
-
-interface User {
-  id: number;
-  name: string;
-  diaryEntries: DiaryEntry[];
-}
+import { Observable, catchError,map,of, switchMap } from 'rxjs';
 
 interface DiaryEntry {
-  date: string;
-  message: string;
+  id: number;
+  fecha: string;
+  titulo: string;
+  contenido: string;
 }
+
 @Injectable({
   providedIn: 'root'
 })
 export class InformacionService {
-  private usuariosUrl = 'assets/usuarios.json';
+  private mensajesUrl = 'http://localhost:3000/mensajes';
 
   constructor(private http: HttpClient) {}
 
-  private getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.usuariosUrl).pipe(
-      catchError(this.handleError<User[]>('getUsers', []))
+  getDiaryEntries(): Observable<DiaryEntry[]> {
+    return this.http.get<{ mensajes: DiaryEntry[] }>(this.mensajesUrl).pipe(
+      map(response => response.mensajes),
+      catchError(this.handleError<DiaryEntry[]>('getDiaryEntries', []))
     );
   }
 
-  addDiaryEntry(userId: number, newEntry: DiaryEntry): Observable<User[]> {
-    return this.getUsers().pipe(
-      map(users => {
-        const user = users.find(u => u.id === userId);
-        if (user) {
-          user.diaryEntries.push(newEntry);
-        }
-        return users;
+  addDiaryEntry(newEntry: DiaryEntry): Observable<DiaryEntry> {
+    return this.http.get<{ mensajes: DiaryEntry[] }>(this.mensajesUrl).pipe(
+      map(response => response.mensajes),
+      switchMap(entries => {
+        const updatedEntries = [...entries, newEntry];
+        return this.http.put(this.mensajesUrl, { mensajes: updatedEntries }).pipe(
+          map(() => newEntry),
+          catchError(this.handleError<DiaryEntry>('addDiaryEntry'))
+        );
       }),
-      catchError(this.handleError<User[]>('addDiaryEntry', []))
+      catchError(this.handleError<DiaryEntry>('addDiaryEntry'))
     );
   }
 
-  deleteDiaryEntry(userId: number, entryDate: string): Observable<User[]> {
-    return this.getUsers().pipe(
-      map(users => {
-        const user = users.find(u => u.id === userId);
-        if (user) {
-          user.diaryEntries = user.diaryEntries.filter(entry => entry.date !== entryDate);
-        }
-        return users;
+  updateDiaryEntry(entry: DiaryEntry): Observable<DiaryEntry> {
+    return this.http.get<{ mensajes: DiaryEntry[] }>(this.mensajesUrl).pipe(
+      map(response => response.mensajes),
+      switchMap(entries => {
+        const updatedEntries = entries.map(e => e.id === entry.id ? entry : e);
+        return this.http.put(this.mensajesUrl, { mensajes: updatedEntries }).pipe(
+          map(() => entry),
+          catchError(this.handleError<DiaryEntry>('updateDiaryEntry'))
+        );
       }),
-      catchError(this.handleError<User[]>('deleteDiaryEntry', []))
+      catchError(this.handleError<DiaryEntry>('updateDiaryEntry'))
     );
   }
 
-  updateDiaryEntry(userId: number, updatedEntry: DiaryEntry): Observable<User[]> {
-    return this.getUsers().pipe(
-      map(users => {
-        const user = users.find(u => u.id === userId);
-        if (user) {
-          const entryIndex = user.diaryEntries.findIndex(entry => entry.date === updatedEntry.date);
-          if (entryIndex !== -1) {
-            user.diaryEntries[entryIndex] = updatedEntry;
-          }
-        }
-        return users;
+  deleteDiaryEntry(id: number): Observable<{}> {
+    return this.http.get<{ mensajes: DiaryEntry[] }>(this.mensajesUrl).pipe(
+      map(response => response.mensajes),
+      switchMap(entries => {
+        const updatedEntries = entries.filter(entry => entry.id !== id);
+        return this.http.put(this.mensajesUrl, { mensajes: updatedEntries }).pipe(
+          catchError(this.handleError<{}>('deleteDiaryEntry'))
+        );
       }),
-      catchError(this.handleError<User[]>('updateDiaryEntry', []))
+      catchError(this.handleError<{}>('deleteDiaryEntry'))
     );
   }
 

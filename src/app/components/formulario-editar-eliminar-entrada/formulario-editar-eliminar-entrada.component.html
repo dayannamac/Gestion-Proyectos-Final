@@ -1,4 +1,4 @@
-<form>
+<form #editForm="ngForm" (ngSubmit)="saveChanges(editForm)">
     <div class="mb-3">
         <label for="fecha" class="form-label">Fecha:</label>
         <input type="date" class="form-control" name="fecha" id="fecha">
