@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-formulario-entrada',
   standalone: true,
   imports: [FormsModule],
+  imports: [FormsModule],
   templateUrl: './formulario-entrada.component.html',
   styleUrl: './formulario-entrada.component.css',
 })

@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuariosService {
-
   private usuariosUrl = 'http://localhost:3000/usuarios';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<any> {
     return this.http.get<any>(this.usuariosUrl);
   }
+
 
   postUsuarios(usuario: any): Observable<any> {
     return this.http.post<any>(this.usuariosUrl, usuario);
