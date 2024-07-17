@@ -5,5 +5,5 @@ import { usuarioGuard } from './guards/usuario/usuario.guard';
 
 export const routes: Routes = [
     { path:"", component: HomeComponent },
-    { path:"inicio", component: InicioComponent, canActivate: [usuarioGuard] }
+    { path:"inicio", component: InicioComponent }
 ];

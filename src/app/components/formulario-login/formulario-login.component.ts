@@ -31,7 +31,7 @@ export class FormularioLoginComponent {
 
         if (user.usuario === formulario.value.usuario && user.password === formulario.value.password) {
           let userID = user.id;
-          let userName = user.name;
+          let userName = user.nombre;
           localStorage.setItem('usuarioID', userID)
           localStorage.setItem('usuarioNom', userName)
           foundUser = user;
@@ -42,7 +42,7 @@ export class FormularioLoginComponent {
       if(foundUser) {
         alert('Bienvenido');
         FormularioLoginComponent.logeado = true;
-        this.ruta.navigate(['/inicio']);
+        this.ruta.navigate(['inicio'])
         localStorage.setItem('usuario', JSON.stringify(foundUser));
       } else {
         alert('Usuario o contraseña incorrecto!');

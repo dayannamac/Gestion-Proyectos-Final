@@ -18,5 +18,35 @@
       "password": "prueba123",
       "id": 103
     }
+  ],
+  "mensajes": [
+    {
+      "idUser": 101,
+      "date": "2024-07-17",
+      "title": "Hola",
+      "message": "Hola q tal",
+      "id": 1
+    },
+    {
+      "idUser": 101,
+      "date": "2024-07-18",
+      "title": "Hola",
+      "message": "Adios",
+      "id": 2
+    },
+    {
+      "idUser": 101,
+      "date": "2024-07-19",
+      "title": "Hola",
+      "message": "duvgbhsdiv",
+      "id": 3
+    },
+    {
+      "idUser": 102,
+      "date": "2024-07-17",
+      "title": "Hola",
+      "message": "s9idhnvusdv",
+      "id": 4
+    }
   ]
 }

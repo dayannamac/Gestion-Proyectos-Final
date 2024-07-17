@@ -6,8 +6,7 @@
                 <div class="row w-100 d-flex justify-content-center align-items-center">
                     <div class="col-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page">Hola, (Aquí nombre de la persona
-                                logueada)</a>
+                            <a class="nav-link active" aria-current="page">Hola, {{nombre}}</a>
                         </li>
                     </div>
                     <div class="col-auto">
@@ -47,13 +46,12 @@
     <div class="row justify-content-center" data-bs-toggle="modal" data-bs-target="#editarEliminarEntradaModal">
         
         <!--Tarjetas de entrada-->
-        <div class="card col-lg-4 mb-5 mx-3" style="width: 18rem;">
+        <div class="card col-lg-4 mb-5 mx-3" *ngFor="let item of mensajes" style="width: 18rem;">
             <div class="card-body-entradas">
                 <br>
-                <h6 class="mt-1">(Fecha de la entrada)</h6>
-                <h5 class="card-title"><b>(Título de la entrada)</b></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's.</p>
+                <h6 class="mt-1">{{item.date}}</h6>
+                <h5 class="card-title"><b>{{item.title}}</b></h5>
+                <p class="card-text">{{item.message}}</p>
             </div>
         </div>
 
