@@ -1,26 +1,25 @@
-<form>
+<form (ngSubmit)="updateMessage()" #form="ngForm">
     <div class="mb-3">
-        <label for="id" class="form-label">Id:</label>
-        <input type="number" class="form-control" name="id" id="fecha" #id>
+        <label for="idEE" class="form-label">Id:</label>
+        <input type="number" class="form-control" name="id" id="idEE" [(ngModel)]="mensajesEE.id" readonly>
     </div>
     <div class="mb-3">
-        <label for="fecha" class="form-label">Fecha:</label>
-        <input type="date" class="form-control" name="fecha" id="fecha" #fecha>
+        <label for="fechaEE" class="form-label">Fecha:</label>
+        <input type="date" class="form-control" name="date" id="fechaEE" [(ngModel)]="mensajesEE.date">
     </div>
     <div class="mb-3">
-        <label for="titulo" class="form-label">Título</label>
-        <input type="text" class="form-control" name="titulo" id="titulo" #titulo>
+        <label for="tituloEE" class="form-label">Título</label>
+        <input type="text" class="form-control" name="title" id="tituloEE" [(ngModel)]="mensajesEE.title">
     </div>
     <div class="mb-3">
-        <label for="contenido" class="form-label">Contenido</label>
-        <textarea class="form-control" name="contenido" id="contenido" rows="4" #contenido></textarea>
+        <label for="contenidoEE" class="form-label">Contenido</label>
+        <textarea class="form-control" name="message" id="contenidoEE" rows="4" [(ngModel)]="mensajesEE.message"></textarea>
     </div>
     <br>
     <div class="d-flex justify-content-center">
         <div class="row">
-            <div class="col-lg-6"><button type="submit" class="btn btn-light"
-                >Editar</button></div>
-            <div class="col-lg-6"><button type="submit" class="btn btn-light"><i class="bi bi-trash-fill"></i></button></div>
+            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="updateMessage()">Editar</button></div>
+            <div class="col-lg-6"><button type="submit" class="btn btn-light" (click)="deleteMessage(mensajesEE.id)"><i class="bi bi-trash-fill"></i></button></div>
         </div>
     </div>    
 </form>

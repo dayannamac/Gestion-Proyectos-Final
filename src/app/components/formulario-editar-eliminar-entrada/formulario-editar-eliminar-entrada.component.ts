@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InformacionService } from '../../services/informacion.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-editar-eliminar-entrada',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './formulario-editar-eliminar-entrada.component.html',
   styleUrls: ['./formulario-editar-eliminar-entrada.component.css']
 })
@@ -12,20 +15,13 @@ export class FormularioEditarEliminarEntradaComponent {
   
   constructor(private service: InformacionService){}
 
-  actualizarUsuario(id:string, fecha: string, titulo: string, contenido: string) {
-    const idUser = Number(localStorage.getItem('usuarioID'));
-    const iden = +id;
+  @Input() mensajesEE: any;
 
-    const mensajes = {
-      idUser,
-      iden,
-      fecha,
-      titulo,
-      contenido,
-    }
-
-    this.service.putMensajes(mensajes, iden).subscribe()
-    window.location.reload()
+  updateMessage() {
+    this.service.putMensajes(this.mensajesEE, this.mensajesEE.id).subscribe(() => {
+      alert("Datos actualizados correctamente!");
+      window.location.reload();
+    });
   }
 
   deleteMessage(id: any) {

@@ -3,7 +3,7 @@ import { FormularioEntradaComponent } from '../../components/formulario-entrada/
 import { FormularioEditarEliminarEntradaComponent } from '../../components/formulario-editar-eliminar-entrada/formulario-editar-eliminar-entrada.component';
 import { CommonModule } from '@angular/common';
 import { FormularioLoginComponent } from '../../components/formulario-login/formulario-login.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { InformacionService } from '../../services/informacion.service';
 
 interface EntradaTrj {
@@ -23,27 +23,23 @@ interface EntradaTrj {
 })
 export class InicioComponent {
 
-  constructor(private ruta: Router, private servicio: InformacionService, private rutaActive: ActivatedRoute){}
+  constructor(private ruta: Router, private servicio: InformacionService){}
 
   nombre = localStorage.getItem('usuarioNom')
+  idUsuario = Number(localStorage.getItem('usuarioID'))
   dataMensajes: any;
   mensajes: EntradaTrj[] = [];
 
   ngOnInit(){
-    let idUsuario = Number(localStorage.getItem('usuarioID'))
-    console.log(idUsuario);
 
     this.servicio.getMensajes().subscribe(mensaje =>{
       this.dataMensajes = mensaje;
-      console.log(mensaje);
-      console.log(idUsuario);
 
         for(let item of this.dataMensajes){
-          if (item.idUser === idUsuario) {
+          if (item.idUser === this.idUsuario) {
             this.mensajes.push(item)
           }
         }
-      console.log('Mensajes final for'+this.mensajes);
     })
   }
 
