@@ -19,8 +19,8 @@ export class InformacionService {
     return this.http.post<any>(this.mensajesUrl, usuario);
   }
 
-  putMensajes(servicio: any, nombre: any): Observable<any> {
-    this.mensajesUrl = `${this.mensajesUrl}/${nombre}`
+  putMensajes(servicio: any, id: any): Observable<any> {
+    this.mensajesUrl = `${this.mensajesUrl}/${id}`
     return this.http.put(this.mensajesUrl, servicio)
   }
 

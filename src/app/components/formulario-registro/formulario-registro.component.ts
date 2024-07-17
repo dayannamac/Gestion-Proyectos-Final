@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.service';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-registro',
@@ -10,30 +10,41 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './formulario-registro.component.css'
 })
 export class FormularioRegistroComponent {
-  idUsuario: string = '';
-  nombreCompleto: string = '';
-  usuario: string = '';
-  password: string = '';
 
   constructor(private servicio: UsuariosService) {}
 
-  saveUsers(form: NgForm) {
-    if (form.valid) {
-      const nuevoUsuario = {
-        nombreCompleto: this.nombreCompleto,
-        usuario: this.usuario,
-        password: this.password
-      };
+  idUsuario: any;
+  nombreCompleto: any;
+  usuario: any;
+  password: any;
 
-      this.servicio.postUsuarios(nuevoUsuario).subscribe(
-        response => {
-          console.log('Usuario registrado con éxito:', response);
-          form.resetForm();
-        },
-        error => {
-          console.error('Error al registrar el usuario:', error);
+  saveUsers(formulario: any) {
+
+    this.servicio.getUsuarios().subscribe((users) => {
+      let idMayor = 0;
+
+      for (const user of users) {
+        if (idMayor != 0) {
+          if (user.id >= idMayor) {
+            idMayor = user.id;
+          }
+        } else {
+          idMayor = user.id
         }
-      );
+      }
+
+      this.idUsuario = idMayor + 1;
+    });
+
+    const temp = {
+      id: this.idUsuario,
+      nombre: formulario.value.nombre,
+      usuario: formulario.value.usuario,
+      password: formulario.value.password,
     }
+    this.servicio.postUsuarios(temp).subscribe()
+
+    alert('usuario registrado!')
+    window.location.reload()
   }
 }

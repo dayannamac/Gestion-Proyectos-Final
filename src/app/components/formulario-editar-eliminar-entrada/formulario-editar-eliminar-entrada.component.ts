@@ -4,7 +4,7 @@ import { InformacionService } from '../../services/informacion.service';
 @Component({
   selector: 'app-formulario-editar-eliminar-entrada',
   standalone: true,
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './formulario-editar-eliminar-entrada.component.html',
   styleUrls: ['./formulario-editar-eliminar-entrada.component.css']
 })

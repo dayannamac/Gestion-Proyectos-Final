@@ -1,34 +1,40 @@
 {
   "usuarios": [
     {
-      "id": "7421",
-      "nombreCompleto": "Denis Chasipanta",
-      "usuario": "dchaipanta",
-      "password": "123"
+      "id": 101,
+      "nombre": "Marcelo Valdéz",
+      "usuario": "marceloxD",
+      "password": "prueba123"
     },
     {
-      "id": "1895",
-      "nombreCompleto": "Anthony Luzon",
+      "id": 102,
+      "nombre": "Anthony Luzon",
       "usuario": "aluzon",
       "password": "321"
     },
     {
-      "id": "2cf9",
-      "nombreCompleto": "Dayana Macay",
+      "id": 103,
+      "nombre": "Dayana Macay",
       "usuario": "dmacay",
       "password": "789"
     },
     {
-      "id": "40a1",
-      "nombreCompleto": "Jonathan Chasipanta",
+      "id": 104,
+      "nombre": "Jonathan Chasipanta",
       "usuario": "jchasipanta",
       "password": "456"
     },
     {
-      "id": "17e9",
-      "nombreCompleto": "Valentina Rodriguez",
+      "id": 105,
+      "nombre": "Valentina Rodriguez",
       "usuario": "vrodriguez",
       "password": "vrodrigez"
+    },
+    {
+      "nombre": "prueba",
+      "usuario": "prueba",
+      "password": "prueba",
+      "id": 106
     }
   ],
   "mensajes": [

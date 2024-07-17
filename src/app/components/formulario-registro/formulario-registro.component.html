@@ -1,4 +1,4 @@
-<form #form="ngForm" (ngSubmit)="saveUsers(form)">
+<form (ngSubmit)="saveUsers(form)" #form="ngForm">
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombre completo</label>
         <input type="text" class="form-control" name="nombre" [(ngModel)]="nombreCompleto">
@@ -13,6 +13,6 @@
     </div>
     <br>
     <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-light" data-bs-dismiss="modal">Registrarse</button>
+        <button type="submit" class="btn btn-light">Registrarse</button>
     </div>    
 </form>
